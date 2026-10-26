@@ -29,7 +29,7 @@
         "url": "https://www.mingwanschool.com"
       }
     ],
-    "socialItems": [{ "type": "github", "url": "https://github.com/1766left" }],
+    "socialItems": [{ "type": "github", "url": "https://github.com/1766left/mw-ai-club" }],
     "description": "一个由学生自己定义方向的技术社团。我们不按课表走——你想做什么，就从那里开始。有人在做给社区用的迷你图书馆，有人在把旋律变成能玩的游戏。我们只要求一件事：做出来的东西，别人真的用得起来。",
     "ctaItems": [
       { "label": "关于 Club", "url": "/about", "variant": "default" },
@@ -37,7 +37,7 @@
     ],
     "support": {
       "label": "GitHub",
-      "url": "https://github.com/1766left",
+      "url": "https://github.com/1766left/mw-ai-club",
       "variant": "outline"
     }
   },
