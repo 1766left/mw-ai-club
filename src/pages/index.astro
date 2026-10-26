@@ -1,0 +1,58 @@
+---
+import Introduction from "@/components/static/Introduction.astro";
+import site_config from "@/site-config.json";
+import FeaturedBlog from "@/components/static/FeaturedBlog.astro";
+import FeaturedProjects from "@/components/static/FeaturedProjects.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { RiArrowRightUpLine } from "@remixicon/react";
+---
+
+<BaseLayout
+    title="MW AI Club"
+    description="明湾学校的学生 AI 社团。我们从一个真问题出发，用 AI 把想法做成别人用得起来的东西。"
+    image="/og/default.png"
+>
+    <div transition:animate="fade" class="pt-10">
+        {/* Introduction Section */}
+        {site_config.bIntroduction && <Introduction />}
+
+        {
+            site_config.featured.important === "projects" ? (
+                <>
+                    <FeaturedProjects />
+                    <FeaturedBlog />
+                </>
+            ) : (
+                <>
+                    <FeaturedBlog />
+                    <FeaturedProjects />
+                </>
+            )
+        }
+
+        {/* 知识库入口 */}
+        <section class="bg-background border border-border p-6 mt-10">
+            <a href="/kb/" class="flex items-center justify-start group w-fit gap-2 select-none">
+                <span class="text-muted-foreground group-hover:text-brand animation">知识库 · 方法、工具、规范</span>
+                <RiArrowRightUpLine className="size-0 group-hover:size-4 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 animation" />
+            </a>
+            <p class="mt-4 max-w-prose text-base leading-relaxed text-muted-foreground">
+                想把一件事做出来，最缺的往往不是工具，是「下一步该干什么」。这里放我们反复用到的东西：怎么把模糊的想法问清楚、AI 该怎么用才不糊弄自己、一个项目从哪一步开始、以及我们踩过的坑。
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+                <a
+                    href="/kb/"
+                    class="inline-flex items-center gap-2 border border-border px-4 py-2 font-mono text-sm text-foreground/80 animation hover:border-brand hover:text-brand"
+                >
+                    打开知识库 →
+                </a>
+                <a
+                    href="/about"
+                    class="inline-flex items-center gap-2 border border-border px-4 py-2 font-mono text-sm text-foreground/80 animation hover:border-brand hover:text-brand"
+                >
+                    关于 Club
+                </a>
+            </div>
+        </section>
+    </div>
+</BaseLayout>

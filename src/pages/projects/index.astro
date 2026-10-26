@@ -1,0 +1,62 @@
+---
+import FilterProjects from "@/components/client/FilterProjects";
+import projects_config from "@/projects-config.json";
+import { parse } from "date-fns";
+import { getImage } from "astro:assets";
+import type { projectConfig } from "@/lib/types";
+import type { ImageMetadata } from "astro";
+import IndexHeader from "@/components/static/IndexHeader.astro";
+import IndexLayout from "@/layouts/IndexLayout.astro";
+
+const allItems = projects_config.sort((a, b) => {
+    const dateA = parse(a.data.date, "dd-MM-yyyy", new Date());
+    const dateB = parse(b.data.date, "dd-MM-yyyy", new Date());
+    return dateB.getTime() - dateA.getTime();
+});
+
+type ImageRecord = { default: ImageMetadata };
+const imageModules = import.meta.glob<ImageRecord>("@/assets/projects/*/*.{png,jpg,jpeg,webp,gif,avif}", { eager: true });
+
+const enriched = await Promise.all(
+    allItems.map(async (item) => {
+        const matches = Object.entries(imageModules)
+            .filter(([path]) => path.includes(`/assets/projects/${item.id}/`))
+            .sort(([a], [b]) => a.localeCompare(b))
+            .map(([, mod]) => mod.default);
+
+        // 优先用配置里指定的 cover（public/ 下的静态图），没有再回退到 assets 里第一张图
+        let heroImage: string | undefined = (item as { cover?: string }).cover;
+        if (!heroImage && matches.length > 0) {
+            const optimized = await getImage({ src: matches[0], width: 600 });
+            heroImage = optimized.src;
+        }
+
+        return {
+            ...item,
+            ...item.data,
+            keywords: item.data.tags,
+            tagline: item.data.description,
+            images: heroImage ? [heroImage] : [],
+            heroImage,
+        } as projectConfig & { heroImage?: string };
+    }),
+);
+---
+
+<IndexLayout
+    title="项目 · MW AI Club"
+    description="Club 里正在做的东西——给社区用的工具、能玩的交互、以及允许失败的实验。"
+    image="/og/default.png"
+>
+    <div transition:animate="fade">
+        <IndexHeader
+            url="/"
+            heading="Projects"
+            subtitle="Club 里正在做的东西。有的一直没做完，有的已经有人在用了。"
+        />
+
+        <div class="mt-3">
+            <FilterProjects client:load items={enriched} />
+        </div>
+    </div>
+</IndexLayout>

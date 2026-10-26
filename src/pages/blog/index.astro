@@ -1,0 +1,33 @@
+---
+import FilterBlog from "@/components/client/FilterBlog";
+import IndexHeader from "@/components/static/IndexHeader.astro";
+import IndexLayout from "@/layouts/IndexLayout.astro";
+import { getCollection } from "astro:content";
+import { parse } from "date-fns";
+
+const allItems = (await getCollection("blog"))
+    .filter((blog) => !blog.data.draft)
+    .sort((a, b) => {
+        const aDate = parse(a.data.date, "dd-MM-yyyy", new Date());
+        const bDate = parse(b.data.date, "dd-MM-yyyy", new Date());
+        return bDate.getTime() - aDate.getTime();
+    });
+---
+
+<IndexLayout
+    title="博客 · MW AI Club"
+    description="Club 的随记、开发日志、教程与公告——包括做完的和做砸的。"
+    image="/og/default.png"
+>
+    <div transition:animate="fade">
+        <IndexHeader
+            url="/"
+            heading="Blog"
+            subtitle="随记、开发日志、教程、公告。做砸的过程也会写，那部分通常更有用。"
+        />
+
+        <div class="mt-3">
+            <FilterBlog client:load items={allItems} />
+        </div>
+    </div>
+</IndexLayout>

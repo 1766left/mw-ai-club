@@ -1,0 +1,48 @@
+/* ===========================================================
+   知识库（Starlight）视觉桥接 —— 明湾色系
+   主色 明湾蓝 #0087FF / 强调 明湾橙 #FF8C0F
+   =========================================================== */
+
+:root {
+  --sl-font: "Geist Variable", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --sl-font-mono: "Geist Mono Variable", "SF Mono", "PingFang SC", monospace;
+
+  /* 深色（Starlight 默认即为深色） */
+  --sl-color-accent-low: #002a4d;
+  --sl-color-accent: #0087ff;
+  --sl-color-accent-high: #a9d6ff;
+  --sl-color-text-accent: #6ab8ff;
+}
+
+:root[data-theme="light"] {
+  --sl-color-accent-low: #d9ecff;
+  --sl-color-accent: #0087ff;
+  --sl-color-accent-high: #004b8d;
+  --sl-color-text-accent: #0069c6;
+}
+
+/* 站名用等宽字，和主站气质对齐 */
+.site-title {
+  font-family: var(--sl-font-mono);
+  letter-spacing: -0.02em;
+}
+
+/* 中文正文行距略放开，读起来更松 */
+.sl-markdown-content {
+  line-height: 1.85;
+}
+
+.sl-markdown-content :is(h1, h2, h3, h4) {
+  letter-spacing: -0.01em;
+}
+
+/* 侧边栏「返回官网」那一项做轻一点的视觉权重 */
+.sidebar-content a[href="/"] {
+  font-family: var(--sl-font-mono);
+  opacity: 0.75;
+}
+
+.sidebar-content a[href="/"]:hover {
+  opacity: 1;
+  color: var(--sl-color-text-accent);
+}

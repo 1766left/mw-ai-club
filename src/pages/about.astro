@@ -1,0 +1,177 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import IndexHeader from "@/components/static/IndexHeader.astro";
+
+const facts = [
+  { k: "成立时间", v: "【待补充】年秋季" },
+  { k: "成员", v: "3–7 年级混龄，约【待补充】人" },
+  { k: "活动时间", v: "每周【待补充】，【待补充】时长" },
+  { k: "活动地点", v: "明湾学校 · 创客空间" },
+  { k: "指导老师", v: "【待补充】" },
+  { k: "联系邮箱", v: "club@mingwan.school" },
+];
+
+const principles = [
+  {
+    no: "01",
+    title: "先有一个真问题",
+    body: "不是先学工具。是先看见一件「这件事本来可以更好」的事——社区里借书很麻烦、家人听不懂你的曲子、同学找不到该问谁。问题越具体，做出来的东西越有人用。",
+  },
+  {
+    no: "02",
+    title: "做出来才能被评价",
+    body: "想法在脑子里都是完美的。所以我们要求每个人尽早把东西跑起来——哪怕只有一屏、一个按钮、一段假数据。能点开，才谈得上好不好。",
+  },
+  {
+    no: "03",
+    title: "东西是给别人用的",
+    body: "做给谁，就请谁来看。Club 的每个项目至少要被真实用户用过一次，然后根据他们的反馈改。这条比任何一次展示评分都重要。",
+  },
+];
+
+const rhythm = [
+  { step: "发现", desc: "观察一个真实的麻烦，写下它为什么麻烦。" },
+  { step: "调研", desc: "查资料、问人、看别人怎么解。查到的立刻用在下一步。" },
+  { step: "动手", desc: "用 AI 一起把东西做出来，做完立刻给人试。" },
+  { step: "反馈", desc: "收集「哪里卡住了」，回到动手，或者回到调研。" },
+];
+---
+
+<BaseLayout
+  title="关于 · MW AI Club"
+  description="MW AI Club 是明湾学校的学生 AI 社团：我们从一个真问题出发，用 AI 把想法做成别人用得起来的东西。"
+  image="/og/default.png"
+>
+  <div transition:animate="fade" class="pb-16">
+    <IndexHeader url="/" heading="About" />
+
+    {/* 一句话定位 */}
+    <section class="border border-border border-t-0 p-6 md:p-8">
+      <p class="text-2xl md:text-3xl leading-relaxed text-foreground/85 font-light">
+        MW AI Club 是明湾学校的学生社团。
+        <br class="hidden md:block" />
+        我们只做一件事：<span class="text-brand">把想法做成别人用得起来的东西</span>。
+      </p>
+      <p class="mt-6 text-base leading-loose text-muted-foreground">
+        AI 在我们这里不是一门要考的课，也不是一个要背下来的工具清单。它更像一个随时在旁边的合作者——你描述想要什么，它陪你试，试错了再改。所以我们不排课程表，我们排项目。
+      </p>
+    </section>
+
+    {/* 三条原则 */}
+    <section class="border border-border border-t-0 p-6 md:p-8">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-muted-foreground select-none">我们相信</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-3">
+        {
+          principles.map((p) => (
+            <div class="border-l-2 border-brand/40 pl-4">
+              <span class="font-mono text-xs text-brand">{p.no}</span>
+              <h3 class="mt-2 text-lg text-foreground/85">{p.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    {/* 运转节奏 */}
+    <section class="border border-border border-t-0 p-6 md:p-8">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-muted-foreground select-none">我们怎么运转</h2>
+      <p class="mt-3 text-sm text-muted-foreground">
+        社团里没有统一的进度。每个人（或每个小组）有自己的项目，按自己的节奏往前推。老师不讲课，主要做三件事：帮你把问题问清楚、帮你找到该查的资料、在你卡住的时候陪你 debug。
+      </p>
+
+      <ol class="mt-6 divide-y divide-border border border-border">
+        {
+          rhythm.map((r, i) => (
+            <li class="flex flex-col gap-1 p-4 md:flex-row md:items-baseline md:gap-6">
+              <span class="font-mono text-xs text-muted-foreground md:w-16 shrink-0">
+                {String(i + 1).padStart(2, "0")} / {r.step}
+              </span>
+              <span class="text-sm leading-relaxed text-foreground/80">{r.desc}</span>
+            </li>
+          ))
+        }
+      </ol>
+
+      <p class="mt-4 text-sm leading-relaxed text-muted-foreground">
+        注意第 4 步会跳回第 2 步或第 3 步。这不是失败，这是正常的。真正的问题是「攒了三个月才第一次给人看」。
+      </p>
+    </section>
+
+    {/* 我们做什么 */}
+    <section class="border border-border border-t-0 p-6 md:p-8">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-muted-foreground select-none">现在在做什么</h2>
+      <ul class="mt-6 space-y-4">
+        <li class="flex gap-4">
+          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+          <p class="text-sm leading-relaxed text-muted-foreground">
+            <span class="text-foreground/85">给社区用的工具</span>——比如一个让邻居之间互相借书的小程序。这类项目要求最高：它真的会被不认识的成年人打开。
+          </p>
+        </li>
+        <li class="flex gap-4">
+          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange"></span>
+          <p class="text-sm leading-relaxed text-muted-foreground">
+            <span class="text-foreground/85">能玩的东西</span>——把音乐、文字、物理规则变成可以上手玩的交互。这类项目最容易开始，也最容易做到一半就散架。
+          </p>
+        </li>
+        <li class="flex gap-4">
+          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-teal"></span>
+          <p class="text-sm leading-relaxed text-muted-foreground">
+            <span class="text-foreground/85">实验</span>——没有明确目标的探索。允许失败，但要求写下「我们试了什么、为什么不行」。
+          </p>
+        </li>
+      </ul>
+      <a
+        href="/projects"
+        class="mt-8 inline-flex items-center gap-2 border border-border px-4 py-2 font-mono text-sm text-foreground/80 animation hover:border-brand hover:text-brand"
+      >
+        去看全部项目 →
+      </a>
+    </section>
+
+    {/* 基本信息 */}
+    <section class="border border-border border-t-0 p-6 md:p-8">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-muted-foreground select-none">基本信息</h2>
+      <dl class="mt-6 divide-y divide-border border border-border">
+        {
+          facts.map((f) => (
+            <div class="flex flex-col gap-1 p-4 md:flex-row md:gap-6">
+              <dt class="font-mono text-xs text-muted-foreground md:w-28 shrink-0">{f.k}</dt>
+              <dd class="text-sm text-foreground/80">{f.v}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    {/* 加入 */}
+    <section id="join" class="border border-border border-t-0 p-6 md:p-8">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-muted-foreground select-none">加入我们</h2>
+      <p class="mt-4 text-base leading-loose text-foreground/80">
+        我们不看你会不会写代码。我们看两件事：<span class="text-brand">你有没有想做的东西</span>，以及<span class="text-brand">你愿不愿意把它改到能用</span>。
+      </p>
+      <p class="mt-4 text-sm leading-relaxed text-muted-foreground">
+        【待补充：招新方式、每学期招新时间、是否需要面试或作品、面向年级范围、报名表单链接】
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="mailto:club@mingwan.school"
+          class="inline-flex items-center gap-2 bg-primary px-4 py-2 font-mono text-sm text-primary-foreground animation hover:opacity-90"
+        >
+          发邮件给我们 →
+        </a>
+        <a
+          href="/kb/"
+          class="inline-flex items-center gap-2 border border-border px-4 py-2 font-mono text-sm text-foreground/80 animation hover:border-brand hover:text-brand"
+        >
+          先看看知识库
+        </a>
+      </div>
+    </section>
+
+    <p class="mt-6 px-1 font-mono text-xs text-muted-foreground">
+      本页标注「待补充」的位置为占位内容，请按实际情况替换。完整清单见项目根目录
+      <span class="text-foreground/70">需要补充的信息清单.md</span>。
+    </p>
+  </div>
+</BaseLayout>

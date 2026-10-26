@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#F4F7FB" />
+  <g stroke="#E3E9F2" stroke-width="1">
+    <line x1="0" y1="150" x2="800" y2="150" />
+    <line x1="0" y1="300" x2="800" y2="300" />
+    <line x1="0" y1="450" x2="800" y2="450" />
+  </g>
+  <g fill="#0087FF">
+    <rect x="90" y="120" width="220" height="14" opacity="0.85" />
+    <rect x="90" y="160" width="330" height="8" opacity="0.35" />
+    <rect x="90" y="184" width="300" height="8" opacity="0.35" />
+    <rect x="90" y="208" width="345" height="8" opacity="0.35" />
+    <rect x="90" y="262" width="150" height="14" opacity="0.85" />
+    <rect x="90" y="302" width="360" height="8" opacity="0.35" />
+    <rect x="90" y="326" width="280" height="8" opacity="0.35" />
+    <rect x="90" y="380" width="180" height="14" opacity="0.85" />
+    <rect x="90" y="420" width="320" height="8" opacity="0.35" />
+  </g>
+  <rect x="90" y="184" width="120" height="8" fill="#FF8C0F" opacity="0.9" />
+  <g fill="none" stroke="#0087FF" stroke-width="2.5" opacity="0.7">
+    <circle cx="600" cy="150" r="42" />
+    <circle cx="672" cy="242" r="42" />
+    <circle cx="600" cy="334" r="42" />
+    <circle cx="672" cy="426" r="42" />
+  </g>
+  <circle cx="672" cy="242" r="9" fill="#FF8C0F" />
+</svg>

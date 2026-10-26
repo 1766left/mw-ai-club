@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { RiHome2Line } from "@remixicon/react";
+import { buttonVariants } from "@/components/ui/button";
+---
+
+<BaseLayout title="404 · 页面不存在 · MW AI Club" description="你访问的页面不存在。" image="/og/default.png">
+    <div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-6">
+        <h1 class="text-9xl font-semibold text-muted-foreground/30 select-none">404</h1>
+        <h2 class="py-6 text-4xl md:text-5xl font-semibold select-none">页面不存在</h2>
+        <p class="space-y-6 text-base leading-relaxed opacity-80 max-w-md">这个地址没有对应的内容。它可能被移走了，或者从来没存在过。</p>
+        <div class="flex flex-wrap justify-center gap-4 mt-8">
+            <a href="/" class={buttonVariants({ variant: "default" })}>
+                <RiHome2Line className="size-4 mr-2" />
+                回到首页
+            </a>
+            <a href="/projects" class={buttonVariants({ variant: "outline" })}>看项目</a>
+            <a href="/kb/" class={buttonVariants({ variant: "outline" })}>查知识库</a>
+        </div>
+    </div>
+</BaseLayout>

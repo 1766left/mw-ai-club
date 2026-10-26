@@ -1,0 +1,271 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+/* font */
+@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/geist-mono";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ! BASE STYLES */
+@layer base {
+    /* defaults */
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background overflow-y-scroll scroll-smooth font-mono antialiased text-foreground;
+    }
+    main {
+        @apply selection:bg-secondary-foreground selection:text-secondary relative z-10 min-h-screen bg-background;
+    }
+    hr {
+        @apply border-ring m-13 my-18 opacity-60;
+    }
+
+    /* utility */
+    .animation {
+        @apply transition-all duration-150 ease-in-out;
+    }
+}
+
+/* ! SHADCN */
+@theme inline {
+    /* font */
+    --font-heading: var(--font-sans);
+    /* --font-mono: "JetBrains Mono Variable", monospace; */
+    --font-mono: "Geist Mono Variable", "SF Mono", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace;
+    --font-sans: "Geist Variable", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+    /* brand */
+    --color-brand: var(--brand);
+    --color-brand-orange: var(--brand-orange);
+    --color-brand-cyan: var(--brand-cyan);
+    --color-brand-teal: var(--brand-teal);
+
+    /* color */
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+
+    /* radius */
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* 明湾色系 — Mingwan brand palette
+   blue    #0087FF  橙 accent #FF8C0F  cyan #0ABEE6  teal #14D7CD
+   页面底 #F4F7FB   正文墨 #16181D */
+:root {
+    --brand: #0087ff;
+    --brand-orange: #ff8c0f;
+    --brand-cyan: #0abee6;
+    --brand-teal: #14d7cd;
+
+    --background: #ffffff;
+    --foreground: #16181d;
+    --foregrounds: #16181d;
+    --card: #ffffff;
+    --card-foreground: #16181d;
+    --popover: #ffffff;
+    --popover-foreground: #16181d;
+    --primary: #0087ff;
+    --primary-foreground: #ffffff;
+    --secondary: #f4f7fb;
+    --secondary-foreground: #16181d;
+    --muted: #f4f7fb;
+    --muted-foreground: #5c6675;
+    --accent: #eaf4ff;
+    --accent-foreground: #0087ff;
+    --destructive: #e5484d;
+    --border: #e3e9f2;
+    --input: #e3e9f2;
+    --ring: #0087ff;
+    --chart-1: #0087ff;
+    --chart-2: #0abee6;
+    --chart-3: #14d7cd;
+    --chart-4: #ff8c0f;
+    --chart-5: #5c6675;
+    --radius: 0.5rem;
+    --sidebar: #f4f7fb;
+    --sidebar-foreground: #16181d;
+    --sidebar-primary: #0087ff;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #eaf4ff;
+    --sidebar-accent-foreground: #0087ff;
+    --sidebar-border: #e3e9f2;
+    --sidebar-ring: #0087ff;
+}
+
+.dark {
+    --brand: #4da9ff;
+    --brand-orange: #ffa03d;
+    --brand-cyan: #3fd0f0;
+    --brand-teal: #4fe3db;
+
+    --background: #0e1218;
+    --foreground: #e8edf5;
+    --foregrounds: #e8edf5;
+    --card: #16181d;
+    --card-foreground: #e8edf5;
+    --popover: #16181d;
+    --popover-foreground: #e8edf5;
+    --primary: #4da9ff;
+    --primary-foreground: #0e1218;
+    --secondary: #1b2029;
+    --secondary-foreground: #e8edf5;
+    --muted: #1b2029;
+    --muted-foreground: #98a2b3;
+    --accent: #16283d;
+    --accent-foreground: #7cc4ff;
+    --destructive: #ff6b6b;
+    --border: rgba(255, 255, 255, 0.1);
+    --input: rgba(255, 255, 255, 0.15);
+    --ring: #4da9ff;
+    --chart-1: #4da9ff;
+    --chart-2: #3fd0f0;
+    --chart-3: #4fe3db;
+    --chart-4: #ffa03d;
+    --chart-5: #98a2b3;
+    --sidebar: #16181d;
+    --sidebar-foreground: #e8edf5;
+    --sidebar-primary: #4da9ff;
+    --sidebar-primary-foreground: #0e1218;
+    --sidebar-accent: #16283d;
+    --sidebar-accent-foreground: #7cc4ff;
+    --sidebar-border: rgba(255, 255, 255, 0.1);
+    --sidebar-ring: #4da9ff;
+}
+
+/* * SHIKI CODE BLOCKS - DARK MODE */
+.dark .astro-code,
+.dark .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+}
+
+/* * PAGEFIND SEARCH */
+:root {
+    --pf-text: var(--foreground);
+    --pf-text-secondary: var(--muted-foreground);
+    --pf-text-muted: var(--muted-foreground);
+    --pf-background: var(--background);
+    --pf-border: var(--border);
+    --pf-border-focus: var(--ring);
+    --pf-skeleton: var(--muted);
+    --pf-skeleton-shine: var(--accent);
+    --pf-hover: var(--muted);
+    --pf-mark: var(--foreground);
+    --pf-scroll-shadow: rgba(0, 0, 0, 0.08);
+    --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.2);
+    --pf-outline-focus: var(--ring);
+    --pf-font: "Geist Variable", sans-serif;
+    --pf-input-height: 40px;
+    --pf-input-font-size: 16px;
+    --pf-border-radius: 0.375rem;
+    --pf-modal-backdrop: rgba(0, 0, 0, 0.5);
+    --pf-modal-max-width: 560px;
+}
+
+.dark {
+    --pf-text: var(--foreground);
+    --pf-text-secondary: var(--muted-foreground);
+    --pf-text-muted: var(--muted-foreground);
+    --pf-background: var(--background);
+    --pf-border: var(--border);
+    --pf-border-focus: var(--ring);
+    --pf-skeleton: var(--muted);
+    --pf-skeleton-shine: var(--accent);
+    --pf-hover: var(--muted);
+    --pf-mark: var(--foreground);
+    --pf-scroll-shadow: rgba(255, 255, 255, 0.08);
+    --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+    --pf-outline-focus: var(--ring);
+    --pf-modal-backdrop: rgba(0, 0, 0, 0.7);
+}
+
+/* * SCROLLBAR STYLING */
+@layer base {
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+}
+
+/* * 中文正文的呼吸感
+   模板原本是按英文调的（leading-relaxed），中文方块字需要更松的行距 */
+@layer base {
+    .prose p,
+    .prose li,
+    .prose blockquote p {
+        line-height: 1.9;
+        letter-spacing: 0.01em;
+    }
+
+    .prose p {
+        margin-top: 0.9em;
+        margin-bottom: 0.9em;
+    }
+
+    /* 表格在中文里容易挤，给点内边距 */
+    .prose th,
+    .prose td {
+        padding: 0.5rem 0.75rem;
+    }
+}
+

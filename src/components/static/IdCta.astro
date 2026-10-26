@@ -1,0 +1,23 @@
+---
+import { buttonVariants } from "../ui/button";
+
+const { type } = Astro.props;
+---
+
+{
+    type === "blog" ? (
+        <div class="flex flex-col items-center justify-center gap-3 border border-border p-6 w-fit mx-auto mb-6">
+            <p class="text-secondary-foreground/80">这篇有帮到你，或者你有不同意见？</p>
+            <a href="mailto:club@mingwan.school" class={`flex items-center justify-center gap-2 ${buttonVariants({ variant: "default" })}`}>
+                <span>写信给我们</span>
+            </a>
+        </div>
+    ) : (
+        <div class="flex flex-col items-center justify-center gap-3 border border-border p-6 w-fit mx-auto mb-6">
+            <p class="text-secondary-foreground/80">想一起做，或者只是想试用一下？</p>
+            <a href="/about#join" class={`flex items-center justify-center gap-2 ${buttonVariants({ variant: "default" })}`}>
+                <span>怎么加入 Club</span>
+            </a>
+        </div>
+    )
+}

@@ -1,0 +1,49 @@
+{
+  "github": { "owner": "1766left", "repo": "mw-ai-club-website" },
+  "domain": "https://mw-ai-club.pages.dev",
+  "bNavigation": true,
+  "homeLabel": "home",
+  "navigationItems": ["about", "projects", "blog", "kb"],
+  "navigationLabels": {
+    "about": "about",
+    "projects": "projects",
+    "blog": "blog",
+    "kb": "docs"
+  },
+  "bPageFind": true,
+  "bThemeToggle": true,
+  "bRssFeed": true,
+  "bIntroduction": true,
+  "introduction": {
+    "badges": ["Mingwan School", "AI × Making"],
+    "heading": "MW AI Club",
+    "subHeadingItems": [
+      {
+        "type": "mail",
+        "label": "club@mingwan.school",
+        "url": "mailto:club@mingwan.school"
+      },
+      {
+        "type": "address",
+        "label": "明湾学校 · 创客空间",
+        "url": "https://www.mingwanschool.com"
+      }
+    ],
+    "socialItems": [{ "type": "github", "url": "https://github.com/1766left" }],
+    "description": "一个由学生自己定义方向的技术社团。我们不按课表走——你想做什么，就从那里开始。有人在做给社区用的迷你图书馆，有人在把旋律变成能玩的游戏。我们只要求一件事：做出来的东西，别人真的用得起来。",
+    "ctaItems": [
+      { "label": "关于 Club", "url": "/about", "variant": "default" },
+      { "label": "看看项目", "url": "/projects", "variant": "outline" }
+    ],
+    "support": {
+      "label": "GitHub",
+      "url": "https://github.com/1766left",
+      "variant": "outline"
+    }
+  },
+  "featured": {
+    "projects": { "visible": true },
+    "blog": { "visible": true },
+    "important": "projects"
+  }
+}
