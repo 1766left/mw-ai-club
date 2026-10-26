@@ -36,13 +36,34 @@
   letter-spacing: -0.01em;
 }
 
-/* 侧边栏「返回官网」那一项做轻一点的视觉权重 */
+/* 侧边栏「返回官网」那一项做轻一点的视觉权重
+   （站点跑在子路径下，href 会带 /mw-ai-club 前缀，所以用首项选择器而不是精确 href） */
+.sidebar-content nav > ul > li:first-child > a,
 .sidebar-content a[href="/"] {
   font-family: var(--sl-font-mono);
   opacity: 0.75;
 }
 
+.sidebar-content nav > ul > li:first-child > a:hover,
 .sidebar-content a[href="/"]:hover {
   opacity: 1;
   color: var(--sl-color-text-accent);
+}
+
+/* 提示框（:::note 等）原本是 Starlight 的紫色，换成明湾蓝 */
+.starlight-aside--note {
+  --sl-color-asides-border: var(--sl-color-accent);
+  --sl-color-asides-text-accent: var(--sl-color-text-accent);
+  background-color: var(--sl-color-accent-low);
+}
+
+.starlight-aside--tip {
+  --sl-color-asides-border: #14d7cd;
+  --sl-color-asides-text-accent: #0a8f88;
+  background-color: #e6fbf9;
+}
+
+:root:not([data-theme="light"]) .starlight-aside--tip {
+  --sl-color-asides-text-accent: #7fefe9;
+  background-color: #06302e;
 }
