@@ -27,7 +27,10 @@ const {
     tags,
 } = Astro.props;
 
-const imageURL = image ? new URL(image, Astro.site) : undefined;
+// 分享图路径要带上 base（站点跑在子路径下时 /og/x.png 会指到根，404）
+const imageURL = image
+    ? new URL(/^https?:/i.test(image) ? image : withBase(image.replace(/^\//, "")), Astro.site)
+    : undefined;
 ---
 
 <head>

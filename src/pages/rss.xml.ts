@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { parse } from "date-fns";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
+import { withBase } from "../lib/base";
 const parser = new MarkdownIt();
 
 export async function GET(context: { site: any }) {
@@ -18,9 +19,10 @@ export async function GET(context: { site: any }) {
     trailingSlash: false,
     title: "MW AI Club",
     description: "明湾学校 AI Club 的随记、开发日志、教程与公告。",
-    site: context.site,
+    // 频道与条目地址都要带 base，否则 RSS 里的链接会指到域名根
+    site: new URL(import.meta.env.BASE_URL, context.site),
     items: items.map((item) => ({
-      link: `/blog/${item.id}`,
+      link: withBase(`blog/${item.id}`),
       pubDate: parse(item.data.date, "dd-MM-yyyy", new Date()),
       title: item.data.title,
       description: item.data.description,
