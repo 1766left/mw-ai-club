@@ -5,6 +5,7 @@ import "@/styles/typography.css";
 import "katex/dist/katex.min.css";
 import Head, { type Props as HeadProps } from "@/components/static/Head.astro";
 import FooterId from "@/components/static/FooterId.astro";
+import { withBase } from "@/lib/base";
 
 const { type, prev, next, ...headProps } = Astro.props as HeadProps & {
     type: "blog" | "projects";
@@ -23,6 +24,6 @@ const { type, prev, next, ...headProps } = Astro.props as HeadProps & {
             <slot />
         </main>
         <FooterId type={type} prev={prev} next={next} />
-        <pagefind-modal reset-on-close bundle-path={import.meta.env.BASE_URL + "pagefind/"}></pagefind-modal>
+        <pagefind-modal reset-on-close bundle-path={withBase("pagefind/")}></pagefind-modal>
     </body>
 </html>

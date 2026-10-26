@@ -117,9 +117,24 @@ sidebar:
 
 ## 部署
 
-推荐 Cloudflare Pages 或 Vercel，构建命令 `npm run build`，输出目录 `dist`。
+**当前线上地址：<https://1766left.github.io/mw-ai-club/>**
 
-上线前记得改 `astro.config.mjs` 里的 `site`（现在是占位域名 `https://mw-ai-club.pages.dev`）——它影响 sitemap、RSS 和分享图的绝对地址。
+托管在 GitHub Pages（项目站点），仓库 `1766left/mw-ai-club`。推 `main` 即自动发布，流程见 `.github/workflows/deploy.yml`：
+
+1. `npm ci` → `npm run build`（`astro build` → 前缀兜底 → Pagefind 索引）
+2. 产物上传为 Pages artifact，由 `actions/deploy-pages` 发布
+
+### 为什么有 `base` 和 `scripts/prefix-base.mjs`
+
+GitHub Pages 的项目站点跑在子路径 `/mw-ai-club/` 下，所以 `astro.config.mjs` 里设了 `base: "/mw-ai-club"`。Astro 会处理 Vite 产物（JS/CSS/字体）和大部分路由，但手写的 `<a href="/about">`、markdown 里的 `[x](/kb/)`、以及组件库内部链接不会自动加前缀。构建后由 `scripts/prefix-base.mjs` 扫一遍 `dist` 统一补上（幂等，已带前缀的跳过）。
+
+### 换成自定义域名（如 `ai.mingwan.school`）
+
+1. `astro.config.mjs`：`site` 改成新域名，`base` 改成 `"/"`
+2. 在 Pages 设置里填 Custom domain，按提示加 DNS 记录
+3. 其余代码不用动——前缀脚本读到 `base: "/"` 会自动跳过
+
+（`site` 影响 sitemap、RSS 和分享图的绝对地址，改域名时一定要一起改。）
 
 ## 已知限制
 
