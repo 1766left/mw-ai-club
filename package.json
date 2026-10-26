@@ -9,8 +9,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && npx -y pagefind --site dist",
-    "build:serve": "astro build && npx -y pagefind --site dist --serve",
+    "build": "astro build && node scripts/prefix-base.mjs && npx -y pagefind --site dist",
+    "build:serve": "astro build && node scripts/prefix-base.mjs && npx -y pagefind --site dist --serve",
     "preview": "astro preview",
     "astro": "astro"
   },

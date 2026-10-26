@@ -15,9 +15,11 @@ import mermaid from "astro-mermaid";
 export default defineConfig({
   devToolbar: { enabled: false },
 
-  // 部署在 Cloudflare Pages，站点位于根路径 /，因此不需要 base
-  // 换域名只改这一行（+ 绑定自定义域名），其余路径不用动
-  site: "https://mw-ai-club.pages.dev",
+  // 部署在 GitHub Pages 项目站点：https://1766left.github.io/mw-ai-club/
+  // base 只影响生成的链接与资源 URL，dist 目录结构不变，正好对应 Pages 的子路径
+  // 以后换成根路径的自定义域名时，把 base 改成 "/" 即可（其余不用动）
+  site: "https://1766left.github.io",
+  base: "/mw-ai-club",
 
   integrations: [
     // 知识库（Starlight）。内容放在 src/content/docs/kb/ → 站点路径 /kb/*
